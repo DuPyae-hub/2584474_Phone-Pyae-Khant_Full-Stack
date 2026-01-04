@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 60 9% 98%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 60 9% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 60 9% 98%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 60 9% 98%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 82 77% 55%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 9% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(28 92% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(82 77% 55%) 0%, hsl(142 69% 45%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(222 47% 8%) 0%, hsl(222 47% 4%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 47% 11%) 0%, hsl(222 47% 7%) 100%);
+    
+    --shadow-glow: 0 0 40px hsl(38 92% 50% / 0.3);
+    --shadow-card: 0 8px 32px hsl(222 47% 4% / 0.5);
+    --shadow-elevated: 0 20px 60px hsl(222 47% 4% / 0.6);
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 60 9% 98%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 47% 14%;
+    --sidebar-accent-foreground: 60 9% 98%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 38 92% 50%;
+  }
+
+  .light {
+    --background: 60 9% 98%;
+    --foreground: 222 47% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 6%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 60 9% 98%;
+
+    --secondary: 222 20% 94%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 222 20% 94%;
+    --muted-foreground: 222 30% 40%;
+
+    --accent: 82 77% 45%;
+    --accent-foreground: 60 9% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 9% 98%;
+
+    --border: 222 20% 88%;
+    --input: 222 20% 88%;
+    --ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-hover {
+    @apply hover:bg-card/90 hover:border-primary/30 transition-all duration-300;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(38 92% 50% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(38 92% 50% / 0.5); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--secondary)) 50%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Custom Court Map Markers */
+.custom-court-marker {
+  background: transparent;
+  border: none;
+}
+
+.court-marker-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.court-marker {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(145deg, hsl(38 92% 50%), hsl(28 92% 45%));
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px hsl(38 92% 50% / 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.court-marker:hover {
+  transform: rotate(-45deg) scale(1.15);
+  box-shadow: 0 6px 24px hsl(38 92% 50% / 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.court-marker::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: hsl(222 47% 6%);
+  border-radius: 50%;
+}
+
+.court-icon {
+  transform: rotate(45deg);
+  font-size: 20px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.court-rating {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  transform: rotate(45deg);
+  background: hsl(82 77% 55%);
+  color: hsl(222 47% 6%);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.court-marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: hsl(38 92% 50% / 0.3);
+  border-radius: 50%;
+  animation: marker-pulse 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes marker-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+  background: hsl(222 47% 9%);
+  color: hsl(60 9% 98%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid hsl(222 30% 18%);
+}
+
+.leaflet-popup-tip {
+  background: hsl(222 47% 9%);
+  border: 1px solid hsl(222 30% 18%);
+}
+
+.leaflet-popup-close-button {
+  color: hsl(215 20% 65%) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: hsl(60 9% 98%) !important;
+}
